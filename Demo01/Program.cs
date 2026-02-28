@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Threading.Channels;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Demo01
 {
@@ -403,60 +404,277 @@ namespace Demo01
             //calculator do (+ - * / %)
             //write program to do that and make it protictive
 
-            int num1, num2;
-            double result;
-            char op;
-            Console.WriteLine("enter first number");
-            if (!int.TryParse(Console.ReadLine(), out num1))
-            {
-                Console.WriteLine("invalid format for first number");
-                return;
-            }
+            //int num1, num2;
+            //double result;
+            //char op;
+            //Console.WriteLine("enter first number");
+            //if (!int.TryParse(Console.ReadLine(), out num1))
+            //{
+            //    Console.WriteLine("invalid format for first number");
+            //    return;
+            //}
 
-            Console.WriteLine("enter operation ( + - * / %)");
-            if (!(char.TryParse(Console.ReadLine(), out op))
-                &&
-                (op == '+' || op == '-' || op == '*' || op == '/' || op == '%'))
-            {
-                Console.WriteLine("invalid format for operation");
-                return;
-            }
+            //Console.WriteLine("enter operation ( + - * / %)");
+            //if (!(char.TryParse(Console.ReadLine(), out op))
+            //    &&
+            //    (op == '+' || op == '-' || op == '*' || op == '/' || op == '%'))
+            //{
+            //    Console.WriteLine("invalid format for operation");
+            //    return;
+            //}
 
-            Console.WriteLine("enter last number");
-            if (!int.TryParse(Console.ReadLine(), out num2))
-            {
-                Console.WriteLine("invalid format for last number");
-                return;
-            }
+            //Console.WriteLine("enter last number");
+            //if (!int.TryParse(Console.ReadLine(), out num2))
+            //{
+            //    Console.WriteLine("invalid format for last number");
+            //    return;
+            //}
 
-            switch (op)
-            {
-                case '+': result = num1 + num2; break;
-                case '-': result = num1 - num2; break;
-                case '*': result = num1 * num2; break;
-                case '/':
-                    if (num2 != 0)
-                        result = (double)num1 / num2;
-                    else
-                    {
-                        Console.WriteLine("can not divide by zero");
-                        return;
-                    }
-                    break;
-                case '%':
-                    if (num2 != 0)
-                        result = num1 % num2;
-                    else
-                    {
-                        Console.WriteLine("can not divide by zero");
-                        return;
-                    }
-                    break;
-                default: return;
-            }
-            Console.WriteLine($"{num1} {op} {num2} = {result}");
+            //switch (op)
+            //{
+            //    case '+': result = num1 + num2; break;
+            //    case '-': result = num1 - num2; break;
+            //    case '*': result = num1 * num2; break;
+            //    case '/':
+            //        if (num2 != 0)
+            //            result = (double)num1 / num2;
+            //        else
+            //        {
+            //            Console.WriteLine("can not divide by zero");
+            //            return;
+            //        }
+            //        break;
+            //    case '%':
+            //        if (num2 != 0)
+            //            result = num1 % num2;
+            //        else
+            //        {
+            //            Console.WriteLine("can not divide by zero");
+            //            return;
+            //        }
+            //        break;
+            //    default: return;
+            //}
+            //Console.WriteLine($"{num1} {op} {num2} = {result}");
 
             #endregion
+            #endregion
+
+            #region Loops Statment
+            // print numbers from 1 to 10
+            //Console.WriteLine("1");
+            //Console.WriteLine("2");
+            //Console.WriteLine("3");
+            //Console.WriteLine("4");
+            //Console.WriteLine("5");
+            //Console.WriteLine("6");
+            //Console.WriteLine("7");
+            //Console.WriteLine("8");
+            //Console.WriteLine("9");
+            //Console.WriteLine("10");
+
+            #region For
+            ///for(initilization; condtion; increment | decrement)
+            ///body
+            ///
+            ///1. initilization
+            ///2. check condtion
+            ///3. if condtion true => do body code
+            ///4. increment | decrement
+            ///5. check condtion
+            ///6. if condtion true => do body code
+            ///7. increment | decrement
+
+            //for (int i = 100; i <= 1_000_000; ++i) //i++ //i +=1 //i = i+1
+            //    Console.WriteLine(i);
+
+            //int i = 1; //initilization
+            //for (; ; )
+            //{
+            //    if (i <= 10) //condtion
+            //    {
+            //        if (i % 2 == 0)
+            //        {
+            //            ++i;
+            //            continue; ////skip the rest of the loop body and go to the next iteration
+            //        }
+            //        Console.WriteLine(i); //body
+            //        ++i; //increment
+            //    }
+            //    else
+            //        break; // exit the loop
+            //}
+            #endregion
+
+            #region while
+            //while(reader.Read())
+            //{
+            //
+            //}
+            //Console.WriteLine("insert 0 if you want to continue");
+            //string input = Console.ReadLine();
+            //while (input == "0")
+            //{
+            //    Console.WriteLine("hello");
+            //    Console.WriteLine("insert 0 if you want to continue or any key if you want to exist");
+            //    input = Console.ReadLine();
+            //}
+
+            //while (true)
+            //{
+            //    Console.WriteLine("insert first number");
+            //    double num1;
+            //    while (!double.TryParse(Console.ReadLine(), out num1))
+            //        Console.WriteLine("wrong foramt, please insert first number");
+
+            //    Console.WriteLine("insert opration");
+            //    char op;
+            //    while (!(char.TryParse(Console.ReadLine(), out op)
+            //        && (op == '+' || op == '-' || op == '*' || op == '/' || op == '%')))
+            //        Console.WriteLine("wrong foramt, please insert opration");
+
+            //    Console.WriteLine("insert last number");
+            //    double num2;
+            //    while (
+            //        !double.TryParse(Console.ReadLine(), out num2)
+            //        ||
+            //        ((op == '/' || op == '%') && num2 == 0)
+            //        )
+            //        Console.WriteLine("wrong foramt, please insert last number");
+
+            //    double result = 0;
+            //    switch (op)
+            //    {
+            //        case '+': result = num1 + num2; break;
+            //        case '-': result = num1 - num2; break;
+            //        case '*': result = num1 * num2; break;
+            //        case '/': result = num1 / num2; break;
+            //        case '%': result = num1 % num2; break;
+            //    }
+            //    Console.WriteLine($"Eqution: {num1} {op} {num2} = {result}");
+            //    Console.WriteLine("*********************************************");
+
+            //}
+            #endregion
+
+            #region do while
+            //for(int i = 11; i<=10; i++)
+            //    Console.WriteLine(i);
+
+            //int i = 11;
+            //do
+            //{
+            //    Console.WriteLine(i);
+            //} while (i <= 10);
+            //do
+            //{
+            //    Console.WriteLine("insert first number");
+            //    double num1;
+            //    while (!double.TryParse(Console.ReadLine(), out num1))
+            //        Console.WriteLine("wrong foramt, please insert first number");
+
+            //    Console.WriteLine("insert opration");
+            //    char op;
+            //    while (!(char.TryParse(Console.ReadLine(), out op)
+            //        && (op == '+' || op == '-' || op == '*' || op == '/' || op == '%')))
+            //        Console.WriteLine("wrong foramt, please insert opration");
+
+            //    Console.WriteLine("insert last number");
+            //    double num2;
+            //    while (
+            //        !double.TryParse(Console.ReadLine(), out num2)
+            //        ||
+            //        ((op == '/' || op == '%') && num2 == 0)
+            //        )
+            //        Console.WriteLine("wrong foramt, please insert last number");
+
+            //    double result = 0;
+            //    switch (op)
+            //    {
+            //        case '+': result = num1 + num2; break;
+            //        case '-': result = num1 - num2; break;
+            //        case '*': result = num1 * num2; break;
+            //        case '/': result = num1 / num2; break;
+            //        case '%': result = num1 % num2; break;
+            //    }
+            //    Console.WriteLine($"Eqution: {num1} {op} {num2} = {result}");
+            //    Console.WriteLine("*********************************************");
+            //    Console.WriteLine("if you want to do anthor calac enter 'y' or press any key to exit");
+            //} while ((Console.ReadLine()).ToLower() == "y");
+            #endregion
+
+            #region Foreach
+            //string text = Console.ReadLine();
+            //foreach(char item in text)
+            //    Console.WriteLine(item);
+
+            //List<string> names = new List<string>()
+            //{
+            //    "ali",
+            //    "ahmed",
+            //    "sara"
+            //};
+
+            //for (int i = 0; i < names.Count; i++)  // to edit
+            //    names[i] += "hello";
+
+            ////vs
+
+            //foreach (string item in names) //to display
+            //    item += "hello"; //not valid
+            #endregion
+            #endregion
+
+            #region Block scope
+            //for (int i = 0; i <= 10; i++)
+            //{
+            //    Console.WriteLine(i); //valid
+            //}
+            //Console.WriteLine(i); //not valid out of scope
+
+            //while (!double.TryParse(Console.ReadLine(), out double x))
+            //{
+            //    //double x;
+            //    Console.WriteLine(x);
+            //}
+            //Console.WriteLine(x);//not valid out of scope
+
+            ////double y;
+            //if (!double.TryParse(Console.ReadLine(), out double y))
+            //{
+            //    int z = 0;
+            //    Console.WriteLine(y);
+            //}
+            //Console.WriteLine(y);//valid
+            //Console.WriteLine(z);//not valid out of scope
+
+            //{
+            //    int z = 0;
+            //}
+            //Console.WriteLine(z);
+            //{
+            //    int z = 0;
+            //}
+            //Console.WriteLine(z);
+            #endregion
+
+            #region arrays
+
+            #endregion
+
+            #region Boxing vs unboxing
+
+            #endregion
+
+            #region Nullable types
+
+            #region Null propagation operator
+
+            #endregion
+            #endregion
+
+            #region Functions
+
             #endregion
         }
     }

@@ -659,7 +659,118 @@ namespace Demo01
             #endregion
 
             #region arrays
+            #region one D Array
+            //int[] arr;
+            // Declare for Reference from Type "Array of Integrs"
+            // Refering to the default value of Reference Type = NULL
+            // CLR Will Allocate 4 Bytes for The Reference at STACK
+            // CLR Will Allocate Zero Bytes at HEAP  
 
+            //arr = new int[5];
+            // CLR Allocate 20 Bytes at HEAP,
+            // Intiailized with the default value of int = 0
+            // make reference refer on first element in object of array
+
+            //int[] arr1 = { 1, 2, 3, 4, 5 };
+            //int[] arr2 = new int[5] { 1, 2, 3, 4, 5 };
+            //int[] arr3 = new int[] { 1, 2, 3, 4, 5, };
+
+            //arr[0] = 1;
+            //arr[4] = 2; //size - 1
+            ////arr[5] = 3; //not valid  // runtime error
+
+            //Console.WriteLine($"the size of array = {arr.Length}, the number of dimenssion = {arr.Rank} ");
+            //Console.WriteLine($"row count = {arr.GetLength(0)}");
+
+            //write a program with protictive code to read elemnts of array from user
+            //then print all elements
+            //int[] numbers = new int[5];
+            //for (int i = 0; i < numbers.Length; i++)
+            //{
+            //    Console.WriteLine($"enter the {i + 1} element of array");
+            //    while (!int.TryParse(Console.ReadLine(), out numbers[i]))
+            //    {
+            //        Console.WriteLine($"wrong format, please enter the {i + 1} element of array");
+            //    }
+            //}
+
+            //foreach (var item in numbers)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+            #endregion
+
+            #region two D Array
+            //int[,] marks;
+            //marks = new int[3,5]; //[rows, column]
+
+            //int[,] marks = { { 1, 2, 3, 4, 5 }, { 1, 2, 13, 4, 5 }, { 1, 2, 3, 4, 5 } };
+            //int[,] marks2;
+            //marks2 = new int[,] { { 1, 2, 3, 4, 5 }, { 1, 2, 3, 4, 5 }, { 1, 2, 3, 4, 5 } };
+
+            //Console.WriteLine($"the size of array = {marks.Length}, the number of dimenssion = {marks.Rank} ");
+            //Console.WriteLine($"row count = {marks.GetLength(0)} , column count = {marks.GetLength(1)} "); //, 3rd D count = {marks.GetLength(2)} invalid out of range
+
+            //Console.WriteLine(marks[1,2]);
+
+            /////read elments of arry from user 
+            /////print elemnts of arry to user
+            /////write program to do that with protictive code and readable messages
+            //int[,] marks;
+            //marks = new int[3,5];
+            //for (int i = 0; i < marks.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < marks.GetLength(1); j++)
+            //    {
+            //        Console.WriteLine($"enter array element Marks[{i},{j}]");      
+            //        while (!int.TryParse(Console.ReadLine(),out marks[i,j]))
+            //        {
+            //            Console.WriteLine($"wrong format, enter array element Marks[{i},{j}]");
+            //        }
+            //    }
+            //}
+
+            //for (int i = 0; i < marks.Length; i++)
+            //{
+            //    int r = i / marks.GetLength(1); //current row
+            //    int c = i % marks.GetLength(1); //current column
+
+            //    Console.WriteLine($"enter array element Marks[{r},{c}]");
+            //    while (!int.TryParse(Console.ReadLine(), out marks[r, c]))
+            //    {
+            //        Console.WriteLine($"wrong format, enter array element Marks[{r},{c}]");
+            //    }
+            //}
+            #endregion
+
+            #region Jagged Array
+            //Point p1 = new Point();
+            //Point p2 = new Point();
+            //Point p3 = new Point();
+            //Point[] points = new Point[3];
+            //points[0] = p1;
+            //points[1] = p2;
+            //points[2] = p3;
+            //Console.WriteLine(points[0].X);
+            ////Console.WriteLine(points[1].X);
+
+            //int[,][,] ReferencesArray;
+            //ReferencesArray = new int[3,5][,];
+
+            //ReferencesArray[0] = new int[2, 2];
+            //ReferencesArray[1] = new int[1, 3];
+            //ReferencesArray[2] = new int[4, 1];
+
+
+            //Console.WriteLine($"the size of array = {ReferencesArray.Length}, the number of dimenssion = {ReferencesArray.Rank} ");
+
+            //Console.WriteLine($"row count = {marks.GetLength(0)} , column count = {marks.GetLength(1)} "); //, 3rd D count = {marks.GetLength(2)} invalid out of range
+
+
+
+            #endregion
             #endregion
 
             #region Boxing vs unboxing

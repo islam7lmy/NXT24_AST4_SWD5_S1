@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections;
+using System.Text;
 using System.Threading.Channels;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -765,25 +766,198 @@ namespace Demo01
 
 
             //Console.WriteLine($"the size of array = {ReferencesArray.Length}, the number of dimenssion = {ReferencesArray.Rank} ");
-
             //Console.WriteLine($"row count = {marks.GetLength(0)} , column count = {marks.GetLength(1)} "); //, 3rd D count = {marks.GetLength(2)} invalid out of range
 
+            //int[,][,] ReferencesArray;
+            //ReferencesArray = new int[1, 2][,];
 
+            //for (int i = 0; i < ReferencesArray.Length; i++)
+            //{
+            //    int r = i / ReferencesArray.GetLength(1); //current row
+            //    int c = i % ReferencesArray.GetLength(1); //current column
+
+            //    int d1,d2;
+            //    Console.WriteLine($"enter array element ReferencesArray[{r},{c}] diminssion 1");
+            //    while (!int.TryParse(Console.ReadLine(), out d1) || d1 < 1)
+            //    {
+            //        Console.WriteLine($"wrong format, enter array element ReferencesArray[{r},{c}] diminssion 1");
+            //    }
+
+            //    Console.WriteLine($"enter array element ReferencesArray[{r},{c}] diminssion 2");
+            //    while (!int.TryParse(Console.ReadLine(), out d2) || d2 < 1)
+            //    {
+            //        Console.WriteLine($"wrong format, enter array element ReferencesArray[{r},{c}] diminssion 2");
+            //    }
+
+            //    ReferencesArray[r, c] = new int[d1,d2];
+            //    for (int objI = 0; objI < ReferencesArray[r, c].Length; objI++)
+            //    {
+            //        int ObjR = objI / ReferencesArray[r, c].GetLength(1); //current row
+            //        int ObjC = objI % ReferencesArray[r, c].GetLength(1); //current column
+
+            //        Console.WriteLine($"enter array element ReferencesArray[{r},{c}][{ObjR}, {ObjC}]");
+            //        while (!int.TryParse(Console.ReadLine(), out ReferencesArray[r, c][ObjR, ObjC]))
+            //        {
+            //            Console.WriteLine($"wrong format, enter array element ReferencesArray[{r},{c}][{ObjR}, {ObjC}]");
+            //        }
+            //    }
+            //}
+
+            //Console.WriteLine("**************************************");
+
+            //foreach (var item in ReferencesArray)
+            //{
+            //    foreach (var i in item)
+            //    {
+            //        Console.WriteLine(i);
+            //    }
+            //    Console.WriteLine("the next item is print now");
+            //}
 
             #endregion
+
+            #region Array methods
+            //decimal[] numbers = { 8, 3, 4, 5, 6, 7, 9, 7, 1, 3 };
+            #region 1. Class Member Methods [Static Methods]
+            //Array.Sort(numbers);
+            //Array.Reverse(numbers);
+            //Array.Clear(numbers); // default
+            //Console.WriteLine(numbers[0]); //0
+
+            //Point[] points = new Point[3];
+            //points[0] = new Point() { X = 10, Y = 20 };
+            //Array.Clear(points); // default 
+            //Console.WriteLine(points[0].X);// error
+
+            //Console.WriteLine(Array.IndexOf(numbers, 10)); //first index
+            //Console.WriteLine(Array.LastIndexOf(numbers, 10)); // last index 
+
+            //var arr = Array.CreateInstance(typeof(int) , 10); //int[] arr = new int[10];
+            #endregion
+            #region 2. Object Member Methods [Non-Static Methods]
+            //int[] newarr = new int[10];
+            //numbers.CopyTo(newarr, 0);
+
+            //int[] newarr = new int[numbers.Length];
+            //numbers.CopyTo(newarr, 0);
+
+            //var dest = Array.CreateInstance(numbers.GetType().GetElementType(), numbers.Length);
+            //numbers.CopyTo(dest, 0);
+            #endregion
+            #endregion
+            //foreach (var i in dest)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+
+            ///Ex01: write a program find the longest distance between Two equal cells.
+            ///In this example.The distance is measured by the number Of cells- for example
+
             #endregion
 
             #region Boxing vs unboxing
+            //// Boxing   : Casting from ValueType to ReferenceType
+            //// UnBoxing : Casting from ReferenceType to ValueType
+
+            //int is object
+            //int x = 10;
+            //object obj = x;
+            //x = 20;
+            //Console.WriteLine(obj);
+
+            //int id = 10;
+            //decimal salary = 3200.5m;
+            //string name = "ali";
+
+            //object[] data = new object[3];
+            //data[0] = id;  // boxing
+            //data[1] = salary; // boxing
+            //data[2] = name; // not boxing
+
+            //ArrayList list = new ArrayList();
+            //list.Add(10); // boxing
+            //list.Add(10.2); // boxing
+            //list.Add("test"); // not boxing
+
+            //List<int> ints = new List<int>();
+            //ints.Add(10);
+
+            ///unboxing 
+            //object obj = 10; // boxing
+            //int x =(int) obj; //explicit casting
+            //Console.WriteLine(x);
+
+            //double x = (double)obj;
+            //Console.WriteLine(x);
+
+            //int z = 10;
+            //double y = z;
+            //Console.WriteLine(y);
+
+
+            //object O1 = new object();
+            //O1 = "Ahmed"; // not boxing
+
+            //O1 = 5;    // int[ValueType] to object[ReferenceType] -> Boxing
+            //O1 = 'A';  // char[ValueType] to object[ReferenceType] -> Boxing
+            //O1 = 3.3;  // double[ValueType] to object[ReferenceType] -> Boxing
+            //O1 = true; // bool[ValueType] to object[ReferenceType] -> Boxing
+            //O1 = new DateTime();  // DateTime[ValueType] to object[ReferenceType] -> Boxing
+            //O1 = new DateOnly(); // DateOnly[ValueType] to object[ReferenceType] -> Boxing
+            //O1 = new TimeOnly(); // TimeOnly[ValueType] to object[ReferenceType] -> Boxing
 
             #endregion
 
             #region Nullable types
+            // NullableTypes : ValueTypes allows NULL as a Value
+            // Assign Null as a Value for ValueType[int, char, bool, decimal, etc] Variables
+
+            //int age = null; //invalid
+            //int age = 0; 
+
+            //int? age = null; //nullable integer : allow int value + null value
+            //double? age2 = null; //nullable double : allow double value + null value
+
+            //double x = 8;
+            //double? y = x; // safe casting 
+            //y = null;
+
+            //if (y is not null)
+            //    x = (double)y; // explicit casting
+            //else
+            //    x = 0;
+
+            //if (y.HasValue)
+            //    x = y.Value;
+            //else
+            //    x = 0;
+
+            //x = y.HasValue ? y.Value : 0;
+
+            /////null coalescing operator
+            //x = y ?? 0;
+            //int test=int.Parse(Console.ReadLine());
+            //int.TryParse(Console.ReadLine(), out test);
+            #endregion
 
             #region Null propagation operator
+            //double x = default; // 0.0
+            //int[] arr = default; //null
 
-            #endregion
-            #endregion
+            //int length;// = arr.Length; // error
 
+            //if(arr is not null)
+            //    length = arr.Length;
+            //else
+            //    length = 0;
+
+            //int? length = arr?.Length;
+
+            //int length = arr?.Length ?? 0;
+
+            //employee?.department?.deptname ?? "N/A"
+            #endregion
             #region Functions
 
             #endregion

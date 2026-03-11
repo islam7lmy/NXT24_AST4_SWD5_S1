@@ -845,6 +845,7 @@ namespace Demo01
             //numbers.CopyTo(dest, 0);
             #endregion
             #endregion
+
             //foreach (var i in dest)
             //{
             //    Console.WriteLine(i);
@@ -853,6 +854,34 @@ namespace Demo01
 
             ///Ex01: write a program find the longest distance between Two equal cells.
             ///In this example.The distance is measured by the number Of cells- for example
+
+            //int size;
+            //do
+            //{
+            //    Console.WriteLine("enter valid size of array");
+            //} while (!int.TryParse(Console.ReadLine(), out size) || size < 1);
+
+            //int[] arr = new int[size];
+
+            //for (int i = 0; i < arr.Length; i++)
+            //{
+            //    do
+            //    {
+            //        Console.WriteLine($"enter valid integer for array element {i +  1}");
+            //    } while (!int.TryParse(Console.ReadLine(), out arr[i]));
+            //}
+
+            //int maxdistance = -1;
+
+            //foreach (int item in arr)
+            //{
+            //    int firstindex = Array.IndexOf(arr, item); // first index
+            //    int lastindex = Array.LastIndexOf(arr, item); // last index 
+            //    int distance = lastindex - firstindex - 1;
+            //    if(distance > maxdistance)
+            //        maxdistance = distance;
+            //}
+            //Console.WriteLine(maxdistance >= 0 ? maxdistance : "array has not equal cells");
 
             #endregion
 
@@ -958,9 +987,138 @@ namespace Demo01
 
             //employee?.department?.deptname ?? "N/A"
             #endregion
-            #region Functions
 
+            #region Functions
+            #region Prototype + calling
+            //PrintLine(); // class memeber method
+            //PrintLine(20, "$"); // passing parameters by postion
+            //PrintLine(pattern: "$",number: 20); // passing parameters by name
+            ////PrintLine(,"$"); //invalid
+            //PrintLine(pattern: "$"); // passing parameters by name
+            #endregion
+            #region value type
+            //int num1 = 9, num2 = 4;
+            //Console.WriteLine($"num1 = {num1}, num2 = {num2}");
+            ////SwapPassByValue(num1, num2); // passing by value
+            //SwapPassByRef(ref num1,ref num2); // passing by value
+            //Console.WriteLine($"num1 = {num1}, num2 = {num2}");
+            #endregion
+
+            #region Reference Type
+            //int[] newarr = { 3, 5, 6 };
+            //Console.WriteLine("passing by value");
+            //Console.WriteLine(SumArrayPassByValue(newarr));
+            ////Console.WriteLine(newarr[0]); // 3 | 100  => 100
+            //Console.WriteLine($"after initilize : {newarr[0]}"); // 3 | 1 => 3 
+            //Console.WriteLine("///////////////////////////////////////////");
+            //Console.WriteLine("passing by ref");
+            //Console.WriteLine(SumArrayPassByRef(ref newarr));
+            ////Console.WriteLine(newarr[0]); // 3 | 200 => 200
+            //Console.WriteLine($"after initilize : {newarr[0]}"); // 3 | 1 => 1
+            #endregion
             #endregion
         }
+
+        #region Functions
+        #region Prototype + calling
+        /// signutare + body
+        /// signutare (return type , name , paramaters)
+
+        //public void PrintLine() //signutare //prototype => object memeber method
+        //public static void PrintLine() //signutare //prototype => class memeber method
+        //{
+        //    // body
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        Console.Write("#");
+        //    }
+        //    Console.WriteLine();
+        //}
+
+        //public static void PrintLine(int number, string pattern) //signutare //prototype => class memeber method
+        //{
+        //    // body
+        //    for (int i = 0; i < number; i++)
+        //    {
+        //        Console.Write(pattern);
+        //    }
+        //    Console.WriteLine();
+        //}
+
+        //public static void PrintLine(int number = 10, string pattern = "#") //signutare //prototype => class memeber method
+        //{
+        //    // body
+        //    for (int i = 0; i < number; i++)
+        //    {
+        //        Console.Write(pattern);
+        //    }
+        //    Console.WriteLine();
+        //}
+        #endregion
+
+        #region Value Type
+        /// write class memeber method take two numbers and swap them not return not print
+        //static void SwapPassByValue(int x , int y)
+        //{
+        //    Console.WriteLine($"inner function,num1 = {x}, num2 = {y}");
+        //    int temp = x;
+        //    x = y;
+        //    y = temp;
+        //    Console.WriteLine($"inner function,num1 = {x}, num2 = {y}");
+        //}
+
+        //static void SwapPassByRef(ref int x,ref int y)
+        //{
+        //    Console.WriteLine($"inner function,num1 = {x}, num2 = {y}");
+        //    int temp = x;
+        //    x = y;
+        //    y = temp;
+        //    Console.WriteLine($"inner function,num1 = {x}, num2 = {y}");
+        //}
+        #endregion
+
+        #region Reference Type
+        /// write class memeber method to sum array elements and return sum
+        //static int SumArrayPassByValue(int[] arr)
+        //{
+        //    int sum = 0;
+        //    foreach (int i in arr)
+        //    {
+        //        sum += i;
+        //    }
+        //    //arr[0] = 100;
+        //    arr = new int[] { 1, 2, 3 };
+        //    return sum;
+        //}
+
+        //static int SumArrayPassByRef(ref int[] arr)
+        //{
+        //    int sum = 0;
+        //    foreach (int i in arr)
+        //    {
+        //        sum += i;
+        //    }
+        //    //arr[0] = 200;
+        //    arr = new int[] { 1, 2, 3 };
+        //    return sum;
+        //}
+        #endregion
+
+        #region Pass by out
+
+        #endregion
+
+        #region params
+
+        #endregion
+        #endregion
+
+        #region Exception Handling
+
+        #endregion
+
+        #region Enums
+
+        #endregion
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Channels;
 using static System.Net.Mime.MediaTypeNames;
@@ -1016,6 +1017,45 @@ namespace Demo01
             ////Console.WriteLine(newarr[0]); // 3 | 200 => 200
             //Console.WriteLine($"after initilize : {newarr[0]}"); // 3 | 1 => 1
             #endregion
+
+            #region Pass by out
+            //int num1 = 10 , num2 = 20, sum = 0 , mul = 0;
+            //SumMulPassingByRef(num1 , num2, ref sum, ref mul);
+            //Console.WriteLine($"sum = {sum} , mul = {mul}");
+
+            //int num3 = 10, num4 = 20, sum3 , mul3 ;
+            //SumMulPassingByOut(num3, num4, out sum3, out mul3);
+            //Console.WriteLine($"sum = {sum3} , mul = {mul3}");
+            #endregion
+
+            #region Params
+            //int[] newarr = { 1, 2, 3, 4, 5, 6 };
+            //SumArray(newarr);
+
+            //Sum(1,2,3,4,5,6,7,8,9);
+            #endregion
+            #endregion
+
+            #region Exception Handling
+            while (true)
+            {
+                try
+                {
+                    DoSomeCode();
+                }
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine(ex.Message);
+                //    ///loging
+                //    //throw;
+                //}
+                finally
+                {
+                    Console.WriteLine("finally");
+                    //[Release | Deallocate | Delete | Close] Unmanaged Resources (DataBaseConnection, File)
+                }
+                Console.WriteLine("program is still runing"); 
+            }
             #endregion
         }
 
@@ -1105,16 +1145,106 @@ namespace Demo01
         #endregion
 
         #region Pass by out
+        /// write class member method take two integer number and return sum and mul of them
+        //static Point SumMul(int a,int b)
+        //{
+        //    Point point = new Point();
+        //    point.X = a + b;
+        //    point.Y = a * b;
+        //    return point;
+        //}
+
+        // By Ref => Read at First and Then Write(Parameter Passed By Ref, Must be initialized Before Passed)
+        //static void SumMulPassingByRef(int a , int b ,ref int sum ,ref int mul)
+        //{
+        //    //sum = a + b;
+        //    //mul = a * b;
+        //}
+
+        //// By Out => Write at First and Then Read (Parameter Passed By Out, Must be initialized Inside Function)
+        //static void SumMulPassingByOut(int a, int b, out int sum, out int mul)
+        //{
+        //    sum = a + b;
+        //    mul = a * b;
+        //}
+
 
         #endregion
 
         #region params
+        //static int Sum(params int[] arr)
+        //{
+        //    int sum = 0;
+        //    foreach (int i in arr)
+        //    {
+        //        sum += i;
+        //    }
+        //    return sum;
+        //}
+        #region enums + params
 
+        #endregion
         #endregion
         #endregion
 
         #region Exception Handling
+        static void DoSomeCode()
+        {
+            int x, y, z;
+            Console.WriteLine("please enter first number : ");
+            x = int.Parse(Console.ReadLine());
 
+            Console.WriteLine("please enter last number : ");
+            y = int.Parse(Console.ReadLine());
+
+            z = x / y;
+
+            Console.WriteLine($"result is : {z}");
+
+            int[] arr = new int[] { 1, 2, 3 };
+
+            Console.WriteLine("please enter index of array to modify : ");
+            int index = int.Parse(Console.ReadLine());
+
+            arr[index] = 99;
+            Console.WriteLine(arr[index]);
+        }
+
+
+        static void DoSomeProtictiveCode()
+        {
+            try
+            {
+                int x, y, z;
+                do
+                {
+                    Console.WriteLine("please enter first number : ");
+                } while (!int.TryParse(Console.ReadLine(), out x));
+
+                do
+                {
+                    Console.WriteLine("please enter lasr number : ");
+                } while (!int.TryParse(Console.ReadLine(), out y) || y == 0);
+
+                z = x / y;
+
+                Console.WriteLine($"result is : {z}");
+
+                int[] arr = new int[] { 1, 2, 3 };
+                int index;
+                do
+                {
+                    Console.WriteLine("please enter index of array to modify : ");
+                } while (!int.TryParse(Console.ReadLine(), out index) || index < 0 || index >= arr.Length);
+
+                arr[index] = 99;
+                Console.WriteLine(arr[index]);
+            }
+            catch (Exception ex)
+            { 
+                //loging
+            }
+        }
         #endregion
 
         #region Enums

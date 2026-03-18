@@ -1037,25 +1037,59 @@ namespace Demo01
             #endregion
 
             #region Exception Handling
-            while (true)
-            {
-                try
-                {
-                    DoSomeCode();
-                }
-                //catch (Exception ex)
-                //{
-                //    Console.WriteLine(ex.Message);
-                //    ///loging
-                //    //throw;
-                //}
-                finally
-                {
-                    Console.WriteLine("finally");
-                    //[Release | Deallocate | Delete | Close] Unmanaged Resources (DataBaseConnection, File)
-                }
-                Console.WriteLine("program is still runing"); 
-            }
+            //while (true)
+            //{
+            //    try
+            //    {
+            //        DoSomeCode();
+            //    }
+            //    //catch (Exception ex)
+            //    //{
+            //    //    Console.WriteLine(ex.Message);
+            //    //    ///loging
+            //    //    //throw;
+            //    //}
+            //    finally
+            //    {
+            //        Console.WriteLine("finally");
+            //        //[Release | Deallocate | Delete | Close] Unmanaged Resources (DataBaseConnection, File)
+            //    }
+            //    Console.WriteLine("program is still runing"); 
+            //}
+            #endregion
+
+            #region Enums
+            #region ex: days
+            //days holiday = days.fri;
+            //Console.WriteLine(holiday); // will print label
+            //Console.WriteLine((int)holiday); // will print number that label refar on 
+            #endregion
+            #region ex:Gender
+            //Console.WriteLine((int) Gender.Male);
+            //Console.WriteLine((int) Gender.male);
+            //Console.WriteLine((int) Gender.M);
+            //Console.WriteLine((int) Gender.m);
+            #endregion
+            #region ex : enums + params
+            //CalculateBill(14, 12, Menu.Pizza, Menu.Juice, Menu.Salad);
+            #endregion
+
+            #region Ex:permission
+            Permission myp = Permission.write;
+            //Console.WriteLine((byte) myp);
+
+            //myp =(Permission) 3; //write + read
+            //Console.WriteLine(myp); //write + read
+
+            //myp = (Permission) 15; //write + read + excut + delete
+            //Console.WriteLine(myp);
+
+            ////// If You Want To Add Permission
+
+            ////// If You Want To Remove (Deny) Permission
+
+            ////// Check Read Permission is existed inside MyP
+            #endregion
             #endregion
         }
 
@@ -1181,8 +1215,39 @@ namespace Demo01
         //    }
         //    return sum;
         //}
-        #region enums + params
+        #region ex: enums + params
+        ///write class memeber method to calc bill take (int tax,int service,order items)
+        ///order details:
+        ///Pizza =120
+        ///juice = 60 
+        ///ـــــــــــــــــــــ
+        ///total item = 180
+        ///tax : (total * tax / 100)
+        ///service : (total * service / 100)
+        ///ـــــــــــــــــــــ
+        ///total order : total + tax + service
+        ///return total order
 
+        static double CalculateBill(int tax, int service, params Menu[] items)
+        {
+            double total = 0;
+            Console.WriteLine("order details:");
+            foreach (Menu item in items)
+            {
+                Console.WriteLine($"{item} : {(int)item}");
+                total += (int)item;
+            }
+            Console.WriteLine("------------------------");
+            Console.WriteLine($"total items : {total}");
+            double taxinmony = total * ((double)tax / 100);
+            Console.WriteLine($"tax : {taxinmony}");
+            double serviceinmony = total * ((double)service / 100);
+            Console.WriteLine($"service : {serviceinmony}");
+            Console.WriteLine("------------------------");
+            total += taxinmony + serviceinmony;
+            Console.WriteLine($"total order : {total}");
+            return total;
+        }
         #endregion
         #endregion
         #endregion
@@ -1241,14 +1306,95 @@ namespace Demo01
                 Console.WriteLine(arr[index]);
             }
             catch (Exception ex)
-            { 
+            {
                 //loging
             }
         }
         #endregion
 
         #region Enums
+        //enums contain labels refar to number
+        enum days
+        {
+            sat = 1,    //=> 1
+            sun,    //=> 2
+            mon,    //=> 3
+            tus,    //=> 4
+            wed,    //=> 5
+            thr,    //=> 6
+            fri      //=> 7
+        }
 
+        enum Gender
+        {
+            Male = 1, // => 1
+            male = 1,
+            M = 1,
+            m = 1,
+            Female = 2, // => 2
+            female = 2,
+            F = 2,
+            f = 2
+        }
+
+        enum branches : byte //0 => 255
+        {
+            smatvally = 105,
+            gamasa, //106
+            _6oct = 252,
+            alex, //253
+            mansoura, //254
+            banha, //255
+            cairo = 1, //256
+            asuyt,   // 2
+        }
+
+        #region Ex : Enums + Params
+        enum Menu
+        {
+            Pizza = 120,
+            Burger = 150,
+            Juice = 40,
+            Salad = 30,
+            Dessert = 60
+        }
+        #endregion
+
+        #region ex: permission
+        //{10, "ahmed"} {20 , true , true,false , false , true ,false}
+        class users
+        {
+            public int id;
+            public string name;
+            public Permission MyPermission; //1 byte => 255
+            //1 byte => 8 permission
+            //2 byte => 9 => 16 permission
+            //4 byte => 17 => 32 permission
+            //public bool write;   //true or false  => 1 byte
+            //public bool read;    // => 1 byte
+            //public bool excute;  // => 1 byte
+            //public bool delete;  // => 1 byte
+            //public bool select;  // => 1 byte
+            //public bool debug;   // => 1 byte
+            //public bool debug1;   // => 1 byte
+            //public bool debug2;   // => 1 byte
+        }
+
+        [Flags] // data annotation (decrator) => learn new behvior to calc
+        enum Permission : byte
+        {
+            write = 1,
+            read = 2,
+            excute = 4,
+            delete = 8,
+            select = 16,
+            debug = 32,
+            debug1 = 64,
+            debug2 = 128,
+
+        }
+        
+        #endregion
         #endregion
     }
 }

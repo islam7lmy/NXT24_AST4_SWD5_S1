@@ -1075,7 +1075,8 @@ namespace Demo01
             #endregion
 
             #region Ex:permission
-            Permission myp = Permission.write;
+            #region enums
+            //Permission myp = Permission.write;
             //Console.WriteLine((byte) myp);
 
             //myp =(Permission) 3; //write + read
@@ -1084,11 +1085,49 @@ namespace Demo01
             //myp = (Permission) 15; //write + read + excut + delete
             //Console.WriteLine(myp);
 
-            ////// If You Want To Add Permission
+            ////// If You Want To Add Permission, Do OR Operation
+            //myp |= Permission.excute;
+            //Console.WriteLine(myp); //write + excute
 
-            ////// If You Want To Remove (Deny) Permission
+            ////// If You Want To Remove (Deny) Permission,  Do Nanad Operation
+            // myp &= ~Permission.excute;
+            //Console.WriteLine(myp); // write
+
+
+            //myp &= ~Permission.read;
+            //Console.WriteLine(myp); // write
+
+            //////If You Want To remove if exists or Add Permission if not //exists, Do XOR Operation
+            //myp ^= Permission.read; //will add it because not exists
+            //Console.WriteLine(myp); ////write + read + excute
+
+            //myp ^= Permission.read; //will remove it because is exists 
+            //Console.WriteLine(myp); ///write + excute
 
             ////// Check Read Permission is existed inside MyP
+            //if ((myp & Permission.excute) == Permission.excute)
+            //    Console.WriteLine("excute permission is exists");
+            //else
+            //    Console.WriteLine("excute permission is not exists"); 
+            #endregion
+            #region functions
+            //Permission myp = Permission.read;
+
+            //////class member function to add permission 
+            /////take current permission , permissions to add 
+            //AddPermission(ref myp, Permission.write, Permission.excute);
+            //Console.WriteLine(myp);
+
+            //////class member function to remove permission 
+            /////take current permission , permissions to remove 
+            //RemovePermission(ref myp, Permission.read, Permission.excute);
+            //Console.WriteLine(myp);
+
+            //////class member function to check permission return bool
+            /////take current permission , permission to check
+            //Console.WriteLine(PermissionChechk(myp, Permission.write) ? "permission is allowed" : "permission is denied");
+            //Console.WriteLine(PermissionChechk(myp, Permission.read) ? "permission is allowed" : "permission is denied");
+            #endregion
             #endregion
             #endregion
         }
@@ -1312,89 +1351,121 @@ namespace Demo01
         }
         #endregion
 
+
         #region Enums
-        //enums contain labels refar to number
-        enum days
+        ////class member function to add permission 
+        ///take current permission , permissions to add 
+        static void AddPermission(ref Permission Current, params Permission[] ToAdd)
         {
-            sat = 1,    //=> 1
-            sun,    //=> 2
-            mon,    //=> 3
-            tus,    //=> 4
-            wed,    //=> 5
-            thr,    //=> 6
-            fri      //=> 7
+            foreach (Permission p in ToAdd)
+            {
+                Current |= p;
+            }
         }
 
-        enum Gender
+
+        ////class member function to remove permission 
+        ///take current permission , permissions to remove 
+        static void RemovePermission(ref Permission Current, params Permission[] ToRemove)
         {
-            Male = 1, // => 1
-            male = 1,
-            M = 1,
-            m = 1,
-            Female = 2, // => 2
-            female = 2,
-            F = 2,
-            f = 2
+            foreach (Permission p in ToRemove)
+            {
+                Current &= ~p;
+            }
         }
 
-        enum branches : byte //0 => 255
+        ////class member function to check permission return bool
+        ///take current permission , permission to check
+        static bool PermissionChechk(Permission Current, Permission ToCheck)
         {
-            smatvally = 105,
-            gamasa, //106
-            _6oct = 252,
-            alex, //253
-            mansoura, //254
-            banha, //255
-            cairo = 1, //256
-            asuyt,   // 2
+            return (Current & ToCheck) == ToCheck;
         }
 
-        #region Ex : Enums + Params
-        enum Menu
-        {
-            Pizza = 120,
-            Burger = 150,
-            Juice = 40,
-            Salad = 30,
-            Dessert = 60
-        }
-        #endregion
-
-        #region ex: permission
-        //{10, "ahmed"} {20 , true , true,false , false , true ,false}
-        class users
-        {
-            public int id;
-            public string name;
-            public Permission MyPermission; //1 byte => 255
-            //1 byte => 8 permission
-            //2 byte => 9 => 16 permission
-            //4 byte => 17 => 32 permission
-            //public bool write;   //true or false  => 1 byte
-            //public bool read;    // => 1 byte
-            //public bool excute;  // => 1 byte
-            //public bool delete;  // => 1 byte
-            //public bool select;  // => 1 byte
-            //public bool debug;   // => 1 byte
-            //public bool debug1;   // => 1 byte
-            //public bool debug2;   // => 1 byte
-        }
-
-        [Flags] // data annotation (decrator) => learn new behvior to calc
-        enum Permission : byte
-        {
-            write = 1,
-            read = 2,
-            excute = 4,
-            delete = 8,
-            select = 16,
-            debug = 32,
-            debug1 = 64,
-            debug2 = 128,
-
-        }
-        
-        #endregion
         #endregion
     }
+
+    #region Enums
+    //enums contain labels refar to number
+    enum days
+    {
+        sat = 1,    //=> 1
+        sun,    //=> 2
+        mon,    //=> 3
+        tus,    //=> 4
+        wed,    //=> 5
+        thr,    //=> 6
+        fri      //=> 7
+    }
+
+    enum Gender
+    {
+        Male = 1, // => 1
+        male = 1,
+        M = 1,
+        m = 1,
+        Female = 2, // => 2
+        female = 2,
+        F = 2,
+        f = 2
+    }
+
+    enum branches : byte //0 => 255
+    {
+        smatvally = 105,
+        gamasa, //106
+        _6oct = 252,
+        alex, //253
+        mansoura, //254
+        banha, //255
+        cairo = 1, //256
+        asuyt,   // 2
+    }
+
+    #region Ex : Enums + Params
+    enum Menu
+    {
+        Pizza = 120,
+        Burger = 150,
+        Juice = 40,
+        Salad = 30,
+        Dessert = 60
+    }
+    #endregion
+
+    #region ex: permission
+    //{10, "ahmed"} {20 , true , true,false , false , true ,false}
+    class users
+    {
+        public int id;
+        public string name;
+        public Permission MyPermission; //1 byte => 255
+                                        //1 byte => 8 permission
+                                        //2 byte => 9 => 16 permission
+                                        //4 byte => 17 => 32 permission
+                                        //public bool write;   //true or false  => 1 byte
+                                        //public bool read;    // => 1 byte
+                                        //public bool excute;  // => 1 byte
+                                        //public bool delete;  // => 1 byte
+                                        //public bool select;  // => 1 byte
+                                        //public bool debug;   // => 1 byte
+                                        //public bool debug1;   // => 1 byte
+                                        //public bool debug2;   // => 1 byte
+    }
+
+    [Flags] // data annotation (decrator) => learn new behvior to calc
+    enum Permission : byte
+    {
+        write = 1,
+        read = 2,
+        excute = 4,
+        delete = 8,
+        select = 16,
+        debug = 32,
+        debug1 = 64,
+        debug2 = 128,
+
+    }
+
+    #endregion
+    #endregion
 }

@@ -63,7 +63,27 @@ namespace OOP
             //book.Names; //invalid because it's private and can't be accessed outside the struct
             //book.size; //invalid because it's private and can't be accessed outside the struct
 
-            Console.WriteLine(book.Size); 
+            Console.WriteLine(book.Size);
+
+            book.AddContact("Ahmed", 1234567890);
+            book.AddContact("Ali", 9876543210);
+            book.AddContact("Mohamed", 5555555555);
+            book.AddContact("Ibrahem", 1111111111);
+
+            book.SetContactByName("Ahmed", 0128545485); // using method to update the number of Ahmed
+            book["Ahmed"] = 0128545485; // using indexer to update the number of Ahmed
+
+            Console.WriteLine(book.GetContactByName("Ahmed")); // using method to get the number of Ahmed
+            Console.WriteLine(book["Ahmed"]); // using indexer to get the number of Ahmed
+
+            book.RemoveContact("Ali"); // using method to remove Ali from the phone book
+
+            for (int i = 0; i < book.Size; i++)
+            {
+                //Console.WriteLine(book.GetContactByIndex(i));
+                Console.WriteLine(book[i]);
+            }
+
             #endregion
             #endregion
         }

@@ -30,10 +30,16 @@ namespace OOP
 
         /// User Defined Constructor is a Special Function 
         /// (Named With The Name of its Class and Has No Return Type)
-        public Point(int _X , int _Y)
+        public Point(int _X, int _Y)
         {
             X = _X;
             Y = _Y;
         }
     }
+
+    /// not allowed inhertiance
+    //struct Point2 : Point
+    //{
+
+    //}
 }

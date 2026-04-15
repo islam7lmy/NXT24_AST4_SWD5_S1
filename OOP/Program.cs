@@ -1,5 +1,6 @@
-﻿using Commen;
+﻿//using Commen;
 using OOP.Inhertiance;
+using OOP.PolyMorphism_OverRiding;
 namespace OOP
 {
     internal class Program
@@ -146,6 +147,175 @@ namespace OOP
             /// constructor exists
             #endregion
             #endregion
+
+            #region PolyMorphism
+            #region OverLoading
+            //Sum(10.0, 20);
+            //Console.WriteLine();
+            #endregion
+            #region OverRiding
+            //TypeA a = new TypeA(10);
+            //a.MyFun01();
+            //a.MyFun02();
+
+            //TypeB b = new TypeB(10,20);
+            //b.MyFun01();
+            //b.MyFun02();
+            #endregion
+            #endregion
+
+            #region Binding
+            #region What is binding
+            /// reference from base type  =>  object  from drived type
+            //Parent p1;
+            ///// reference 
+            //p1 = new child(10,20,30);
+            ///reference => object 
+
+            //TypeA typeA = new TypeB(10, 20);
+
+            /////TypeB typeB = (TypeB)(new TypeA(10)); ///not binding
+            ////typeA.A = 10;
+            //////typeA.B = 20; //not valid
+            ////typeA.MyFun01();
+            ////typeA.MyFun02();
+            ///////typeA.MyFun03(); //not valid
+
+
+            /////2.1 static binding [early binding] => new keyword
+            /////Compiler Will Bind Function Call Based On Reference Type NOT Object Type
+            /////at complition time
+            //typeA.MyFun01(); ///will run method in base class
+
+            /////2.2 dynamic binding [late binding] => override keyword
+            ///// Will Bind Function Call Based On Object Type NOT Reference Type
+            /////at runtime
+            //typeA.MyFun02(); ///will run method in dervied class
+            #endregion
+            #region Why Need Binding
+            //FullTimeEmployee fullTimeEmployee = new FullTimeEmployee();
+            ////OOP.PolyMorphism_OverRiding.Employee reference = fullTimeEmployee;
+            /////// two reference [fulltimeemployee, reference] => refer to object of type full time employee
+            ////ProcessEmployee(reference);/// reference , object
+            /////OOP.PolyMorphism_OverRiding.Employee reference = fullTimeEmployee;  //copy address
+
+            //fullTimeEmployee.MyFun01(); //static binded
+            //fullTimeEmployee.MyFun02(); //dynamic binded
+            //fullTimeEmployee.MyFun04(); //just inherted
+
+            //Console.WriteLine("after calling ");
+
+            //ProcessEmployee(fullTimeEmployee);
+
+            ////ProcessEmployee(fullTimeEmployee);
+
+            //Console.WriteLine("Parttime employee calling");
+
+            //PartTimeEmployee partTimeEmployee = new PartTimeEmployee();
+            //ProcessEmployee(partTimeEmployee);
+
+            #endregion
+            #region More Practies on binding
+            //TypeA typeA = new TypeC(1, 2, 3); //indirect parent
+            //typeA.A = 10;
+            ////typeA.B = 20;///not valid
+            ////typeA.C = 30;///not valid
+            //typeA.MyFun01(); // static binding method => will run reference method
+            //typeA.MyFun02(); // dynamic binding method => will run object method
+
+
+            //TypeB typeB = new TypeC(1, 2, 3); //indirect parent
+            //typeB.A = 10;
+            //typeB.B = 20;///valid
+            ////typeB.C = 30;///not valid
+            //typeB.MyFun01(); // static binding method => will run reference method
+            //typeB.MyFun02(); // dynamic binding method => will run object method
+
+            
+
+            #endregion
+            #endregion
         }
+        #region PolyMorphism 1. Function OverLoading
+        //1.data type of paramaters
+        //2.count of paramaters
+        //3.order if not same data type of paramaters
+        public static int Sum(int y , int x)
+        {
+            return x + y;
+        }
+
+        public static int Sum(int x, int y , int z)
+        {
+            return x + y + z;
+        }
+
+        public static int Sum(double x, double y)
+        {
+            return (int)(x + y);
+        }
+
+        //public static double Sum(double x, double y) // not overloading
+        //{
+        //    return (int)(x + y);
+        //}
+
+        public static int Sum(int x, double y)
+        {
+            return (int)(x + y);
+        }
+
+        public static int Sum(double x, int y)
+        {
+            return (int)(x + y);
+        }
+        #endregion
+
+        #region Why Need Binding
+        //public static void ProcessEmployee(OOP.Employee emp)
+        //{
+        //    //if (emp is not null)
+        //    //{
+        //    //    emp.MyFun01();
+        //    //    emp.MyFun02();
+        //    //}
+        //}
+        public static void ProcessEmployee(OOP.PolyMorphism_OverRiding.Employee emp)
+        {
+            if (emp is not null)
+            {
+                emp.MyFun01(); //static binded
+                emp.MyFun02(); //dynamic binded
+                emp.MyFun04(); //just inherted
+            }
+        }
+
+        //public static void ProcessEmployee(FullTimeEmployee emp)
+        //{
+        //    if (emp is not null)
+        //    {
+        //        emp.MyFun01();
+        //        emp.MyFun02();
+        //    }
+        //}
+
+        //public static void ProcessEmployee(PartTimeEmployee emp)
+        //{
+        //    if (emp is not null)
+        //    {
+        //        emp.MyFun01();
+        //        emp.MyFun02();
+        //    }
+        //}
+
+        //public static void ProcessEmployee(FreeLance emp)
+        //{
+        //    if (emp is not null)
+        //    {
+        //        emp.MyFun01();
+        //        emp.MyFun02();
+        //    }
+        //}
+        #endregion
     }
 }

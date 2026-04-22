@@ -1,5 +1,6 @@
 ﻿//using Commen;
 using OOP.Inhertiance;
+using OOP.InterFaces;
 using OOP.PolyMorphism_OverRiding;
 namespace OOP
 {
@@ -231,21 +232,87 @@ namespace OOP
             //typeB.MyFun01(); // static binding method => will run reference method
             //typeB.MyFun02(); // dynamic binding method => will run object method
 
-            
+
+            //TypeA typeA = new TypeD(1, 2, 3, 4);
+            //TypeB typeB = new TypeD(1, 2, 3, 4);
+            //TypeC typeC = new TypeD(1, 2, 3, 4);
+
+            //typeA.MyFun02(); //TypeC: A = 1, B = 2, C = 3
+            //typeB.MyFun02(); //TypeC: A = 1, B = 2, C = 3
+            //typeC.MyFun02(); //TypeC: A = 1, B = 2, C = 3
+
+
+            //TypeA typeA = new TypeE(1, 2, 3, 4, 5);
+            //TypeB typeB = new TypeE(1, 2, 3, 4, 5);
+            //TypeC typeC = new TypeE(1, 2, 3, 4, 5);
+            //TypeD typeD1 = new TypeD(1, 2, 3, 4); //not binding
+            //TypeD typeD2 = new TypeE(1, 2, 3, 4, 5);
+
+            //typeA.MyFun02(); //TypeC: A = 1, B = 2, C = 3
+            //typeB.MyFun02(); //TypeC: A = 1, B = 2, C = 3
+            //typeC.MyFun02(); //TypeC: A = 1, B = 2, C = 3
+            //typeD1.MyFun02(); //TypeD: A = 1, B = 2 , C = 3, D = 4
+            //typeD2.MyFun02(); //TypeE: A = 1, B = 2, C = 3, D = 4, E = 5 
+            #endregion
+            #endregion
+
+            #region Interface
+
+            #region EX01
+            ////IMyType mytype0 = new IMyType();//not valid
+
+            //IMyType myType = new MyType(); ///binding
+            //myType.Salary = 30;
+            //myType.Myfun();
+            //myType.Print();
+
+            //MyType myType1 = new MyType();
+            //myType1.Salary = 30;
+            //myType1.Myfun();
+            /////myType1.Print(); //not valid 
+            #endregion
+
+            #region EX02
+            //SeriesByTwo seriesByTwo = new SeriesByTwo();
+            //Print10NumbersFromSeries(seriesByTwo);
+
+            //SeriesByThree seriesByThree = new SeriesByThree();
+            //Print10NumbersFromSeries(seriesByThree);
+
+            //SeriesByFour seriesByFour = new SeriesByFour();
+            //Print10NumbersFromSeries(seriesByFour);
+
+            //SeriesByFive seriesByFive = new SeriesByFive();
+            //Print10NumbersFromSeries(seriesByFive);
+            #endregion
+
+            #region Implment Interface Implicitly Vs Implment Interface Explicitly
+            //AirPlan airPlan00 = new AirPlan();
+            //airPlan00.Forward(); ///impilcit implmentation
+            ////airPlan00.Backward(); /// not valid ///explicit implmentation
+
+            //IMovable airplan01 = new AirPlan();
+            //airplan01.Forward();
+            //airplan01.Backward();  //valid => IMoveable Interface Reference => Access Onlly On IMoveable Interface Methods
+
+            //IFlayable airplan02 = new AirPlan();
+            //airplan02.Forward();
+            //airplan02.Backward(); //valid => IFlayable Interface Reference => Access Onlly On IFlayable Interface Methods
 
             #endregion
+
             #endregion
         }
         #region PolyMorphism 1. Function OverLoading
         //1.data type of paramaters
         //2.count of paramaters
         //3.order if not same data type of paramaters
-        public static int Sum(int y , int x)
+        public static int Sum(int y, int x)
         {
             return x + y;
         }
 
-        public static int Sum(int x, int y , int z)
+        public static int Sum(int x, int y, int z)
         {
             return x + y + z;
         }
@@ -314,6 +381,68 @@ namespace OOP
         //    {
         //        emp.MyFun01();
         //        emp.MyFun02();
+        //    }
+        //}
+        #endregion
+
+        #region InterFaces
+        public static void Print10NumbersFromSeries(ISeries series)
+        {
+            if (series is not null)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    Console.Write(series.Current);
+                    Console.Write("\t");
+                    series.GetNext();
+                }
+                series.Reset();
+                Console.WriteLine();
+            }
+        }
+
+        //public static void Print10NumbersFromSeries(SeriesByTwo series)
+        //{
+        //    if(series is not null)
+        //    {
+        //        for (int i = 0; i < 10; i++)
+        //        {
+        //            Console.Write(series.Current);
+        //            Console.Write("\t");
+        //            series.GetNext();
+        //        }
+        //        series.Reset();
+        //        Console.WriteLine();
+        //    }
+        //}
+
+        //public static void Print10NumbersFromSeries(SeriesByThree series)
+        //{
+        //    if (series is not null)
+        //    {
+        //        for (int i = 0; i < 10; i++)
+        //        {
+        //            Console.Write(series.Current);
+        //            Console.Write("\t");
+        //            series.GetNext();
+        //        }
+        //        series.Reset();
+        //        Console.WriteLine();
+        //    }
+        //}
+
+        //public static void Print10NumbersFromSeries(SeriesByFour series)
+        //{
+        //    if (series is not null)
+        //    {
+        //        for (int i = 0; i < 10; i++)
+        //        {
+        //            Console.Write(series.Current);
+        //            Console.Write("\t");
+        //            series.GetNext();
+        //        }
+        //        series.Reset();
+        //        Console.WriteLine();
         //    }
         //}
         #endregion

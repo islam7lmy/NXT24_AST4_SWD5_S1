@@ -1,4 +1,5 @@
 ﻿//using Commen;
+using OOP.Abstraction;
 using OOP.Inhertiance;
 using OOP.InterFaces;
 using OOP.PolyMorphism_OverRiding;
@@ -287,9 +288,9 @@ namespace OOP
             #endregion
 
             #region Implment Interface Implicitly Vs Implment Interface Explicitly
-            //AirPlan airPlan00 = new AirPlan();
+            ///AirPlan airPlan00 = new AirPlan();
             //airPlan00.Forward(); ///impilcit implmentation
-            ////airPlan00.Backward(); /// not valid ///explicit implmentation
+            ///airPlan00.Backward(); /// not valid ///explicit implmentation
 
             //IMovable airplan01 = new AirPlan();
             //airplan01.Forward();
@@ -301,6 +302,124 @@ namespace OOP
 
             #endregion
 
+            #region Shallow copy vs Deep copy
+            //int x = 10;
+            //int y = 20;
+            //y = x;
+            //y = 30;
+            //Console.WriteLine(x);
+
+            //int[] Arr01 = { 1, 2, 3 };
+            //int[] Arr02 = { 4, 5, 6 };
+            //Console.WriteLine(Arr01.GetHashCode());
+            //Console.WriteLine(Arr02.GetHashCode());
+
+            #region Shallow Copy
+            //Arr02 = Arr01;
+            //Console.WriteLine("After shallow Copy");
+            //Console.WriteLine(Arr01.GetHashCode());
+            //Console.WriteLine(Arr02.GetHashCode());
+            //Arr02[0] = 90;
+            #endregion
+
+            #region Deep Copy
+            //Arr02 = (int[])Arr01.Clone();
+            //Console.WriteLine("After Deep Copy");
+            //Console.WriteLine(Arr01.GetHashCode());
+            //Console.WriteLine(Arr02.GetHashCode());
+            //Arr02[0] = 90;
+            #endregion
+
+            //foreach (int i in Arr01)
+            //{
+            //    Console.Write(i);
+            //    Console.Write("\t");
+            //}
+
+            //Console.WriteLine();
+
+            //foreach (int i in Arr02)
+            //{
+            //    Console.Write(i);
+            //    Console.Write("\t");
+            //}
+            #endregion
+
+            #region Built-In Interface ICloneable
+            //InterFaces.Employee emp01 = new InterFaces.Employee()
+            //{
+            //    Id = 10,
+            //    Name = "ahmed",
+            //    Salary = 4000,
+            //    Address = "Mansoura"
+            //};
+            //emp01.Id = 10;
+            //emp01.Name = "ahmed";
+
+            //InterFaces.Employee emp02 = new InterFaces.Employee();
+            //emp02.Id = 20;
+            //emp02.Name = "Ali";
+            //emp02.Salary = 8000;
+            //emp02.Address = "Asyut";
+
+            //Console.WriteLine(emp01.GetHashCode());
+            //Console.WriteLine(emp02.GetHashCode());
+
+            //emp01 = emp02; //shallow
+
+
+            //emp02.Id = emp01.Id;
+            //emp02.Name = emp01.Name;
+            //emp02.Salary = emp01.Salary;
+            //emp02.Address = emp01.Address;
+
+            //emp02 = InterFaces.Employee.DeepCopy(emp01);
+            //emp02 = new InterFaces.Employee(emp01);
+            //emp02 = (InterFaces.Employee) emp01.Clone();
+            //Console.WriteLine("After DeepCopy");
+            //Console.WriteLine(emp01.GetHashCode());
+            //Console.WriteLine(emp02.GetHashCode());
+            //emp02.Id = 90;
+            //Console.WriteLine($"Emp01: {emp01}");
+            //Console.WriteLine($"Emp02: {emp02}");
+            #endregion
+
+            #region Built-In Interface IComparable
+            //InterFaces.Employee[] employees =
+            //{
+            //    new InterFaces.Employee(){ Id = 10 , Name = "Ahmed" , Address = "Mansoura" , Salary = 4000},
+            //    new InterFaces.Employee(){ Id = 20 , Name = "Ali" , Address = "Cairo" , Salary = 8000},
+            //    new InterFaces.Employee(){ Id = 30 , Name = "Omr" , Address = "Giza" , Salary = 6000},
+            //    new InterFaces.Employee(){ Id = 40 , Name = "Tark" , Address = "Asyut" , Salary = 5000},
+            //};
+
+            //Array.Sort(employees);
+
+            //for (int i = 0; i < employees.Length; i++)
+            //{
+            //    for (int j = 0; j < employees.Length - 1 - i; j++)
+            //    {
+            //        if (employees[j].CompareTo(employees[j + 1]) > 0)//(employees[j] > employees[j + 1])
+            //            SwapEmployee(employees[j], employees[j + 1]);
+            //    }
+            //}
+
+            //foreach (var item in employees)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            #endregion
+            #endregion
+
+            #region Abstract Class
+            Squere sq01 = new Squere();
+            sq01.Dim01 = 10;
+            ProcedShape(sq01);
+
+
+            Circle cir01 = new Circle();
+            cir01.Dim01 = 10;
+            ProcedShape(cir01);
             #endregion
         }
         #region PolyMorphism 1. Function OverLoading
@@ -443,6 +562,33 @@ namespace OOP
         //        }
         //        series.Reset();
         //        Console.WriteLine();
+        //    }
+        //}
+        #endregion
+
+        #region Abstract Class
+        public static void ProcedShape(Shape shape)
+        {
+            if (shape is not null)
+            {
+                Console.WriteLine(shape.Perimeter);
+                Console.WriteLine(shape.CalcArea());
+            }
+        }
+        //public static void ProcedShape(Squere shape)
+        //{
+        //    if(shape  is not null)
+        //    {
+        //        Console.WriteLine(shape.Perimeter);
+        //        Console.WriteLine(shape.CalcArea());
+        //    }
+        //}
+        //public static void ProcedShape(Circle shape)
+        //{
+        //    if (shape is not null)
+        //    {
+        //        Console.WriteLine(shape.Perimeter);
+        //        Console.WriteLine(shape.CalcArea());
         //    }
         //}
         #endregion

@@ -30,8 +30,15 @@ namespace OOP.Abstraction
         }
     }
 
+    abstract class Rectshape : Shape
+    {
+        public override double CalcArea()
+        {
+            return Dim01 * Dim02;
+        }
+    }
 
-    class Squere : Shape
+    class Squere : Rectshape
     {
         //public double Dim01 { get; set; }
 
@@ -44,7 +51,7 @@ namespace OOP.Abstraction
 
     }
 
-    class Rectangle : Shape
+    class Rectangle : Rectshape
     {
         //public double Dim01 { get; set; }
         //public double Dim02 { get; set; }

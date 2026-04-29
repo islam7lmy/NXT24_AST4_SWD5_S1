@@ -2,6 +2,7 @@
 using OOP.Abstraction;
 using OOP.Inhertiance;
 using OOP.InterFaces;
+using OOP.Operator_Overloading;
 using OOP.PolyMorphism_OverRiding;
 namespace OOP
 {
@@ -412,15 +413,54 @@ namespace OOP
             #endregion
 
             #region Abstract Class
-            Squere sq01 = new Squere();
-            sq01.Dim01 = 10;
-            ProcedShape(sq01);
+            //Squere sq01 = new Squere();
+            //sq01.Dim01 = 10;
+            //ProcedShape(sq01);
 
 
-            Circle cir01 = new Circle();
-            cir01.Dim01 = 10;
-            ProcedShape(cir01);
+            //Circle cir01 = new Circle();
+            //cir01.Dim01 = 10;
+            //ProcedShape(cir01);
             #endregion
+
+            #region Operator OverLoading
+            //Complex c1 = new Complex() { Real = 1, Imag = 2 };
+            //Complex c2 = new Complex() { Real = 3, Imag = 4 };
+            //Complex c3 = new Complex() { Real = 5, Imag = 6 };
+            //Complex c5 = default;
+            //Complex c4 = c1 + c2 + c3 + c5;
+            //Console.WriteLine(c4);
+
+            //Console.WriteLine(c1++);  //print 1+2i then value 2+3i
+            //Console.WriteLine(++c1); //value 3+4i then print 3+4i
+
+            //Console.WriteLine(c1--); //print 3+4i then value 2+3i 
+            //Console.WriteLine(--c1); //value 1+2i then print 1+2i
+
+            //int x = 5;
+            //int result2 = 10 * 3 + ++x / x++ * 30 + ++x / x = 10 * 3 + 6 / 6 * 30 + 8 / 8;
+
+
+            //int result2 = 10 * 3 + 6 / 6 * 30 + 8 / 8;
+
+            //int result = x++ + ++x;
+            //int result = 5 + 7;
+            //int a = x++; //a = 5 ,x = 6
+            //int b = ++x; //b = 7 ,x = 7
+            //int result2 = a + b;
+            //Console.WriteLine(result2);
+            #endregion
+
+            #region user defined casting operator
+            //int x = 0;
+            //double y = 10;
+            //x = (int) y;
+
+            //Operator_Overloading.Employee emp = new Operator_Overloading.Employee();
+
+            //EmployeeViewModel empview = emp;
+            #endregion
+
         }
         #region PolyMorphism 1. Function OverLoading
         //1.data type of paramaters

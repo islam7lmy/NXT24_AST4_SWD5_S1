@@ -453,12 +453,31 @@ namespace OOP
 
             #region user defined casting operator
             //int x = 0;
+            //x.add(3);
+            //test.add(x, 3);
+
             //double y = 10;
-            //x = (int) y;
+            //y = x;
+            //x = (int)y;
 
-            //Operator_Overloading.Employee emp = new Operator_Overloading.Employee();
+            Operator_Overloading.Employee emp = new Operator_Overloading.Employee()
+            {
+                Id = 102030,
+                FirstName = "Ahmed",
+                LastName = "Mohmed",
+                BirthDate = new DateOnly(2010, 03, 15),
+                Salary = 3_000,
+                Address = "13, el galaa street, front of Mansoura university gate",
+                City = "Mansoura",
+                Country = "Egypt"
+            };
 
+            //EmployeeViewModel empview =(EmployeeViewModel) emp;
+            //EmployeeViewModel empview =new EmployeeViewModel(emp);
+            EmployeeViewModel empview = emp.ToEmployeeViewModel();
             //EmployeeViewModel empview = emp;
+
+            Console.WriteLine(empview);
             #endregion
 
         }
@@ -632,5 +651,13 @@ namespace OOP
         //    }
         //}
         #endregion
+    }
+
+    static class test
+    {
+        public static void add(this int a , int value)
+        {
+            a += value;
+        }
     }
 }

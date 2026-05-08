@@ -1,9 +1,11 @@
 ﻿//using Commen;
 using OOP.Abstraction;
+using OOP.Generics;
 using OOP.Inhertiance;
 using OOP.InterFaces;
 using OOP.Operator_Overloading;
 using OOP.PolyMorphism_OverRiding;
+using OOP.Static;
 namespace OOP
 {
     internal class Program
@@ -460,26 +462,121 @@ namespace OOP
             //y = x;
             //x = (int)y;
 
-            Operator_Overloading.Employee emp = new Operator_Overloading.Employee()
-            {
-                Id = 102030,
-                FirstName = "Ahmed",
-                LastName = "Mohmed",
-                BirthDate = new DateOnly(2010, 03, 15),
-                Salary = 3_000,
-                Address = "13, el galaa street, front of Mansoura university gate",
-                City = "Mansoura",
-                Country = "Egypt"
-            };
+            //Operator_Overloading.Employee emp = new Operator_Overloading.Employee()
+            //{
+            //    Id = 102030,
+            //    FirstName = "Ahmed",
+            //    LastName = "Mohmed",
+            //    BirthDate = new DateOnly(2010, 03, 15),
+            //    Salary = 3_000,
+            //    Address = "13, el galaa street, front of Mansoura university gate",
+            //    City = "Mansoura",
+            //    Country = "Egypt"
+            //};
+            //emp.PrintPattern();
+            //EmployeeViewModel viewmodel = emp.converttoviewmodel();
 
             //EmployeeViewModel empview =(EmployeeViewModel) emp;
             //EmployeeViewModel empview =new EmployeeViewModel(emp);
-            EmployeeViewModel empview = emp.ToEmployeeViewModel();
+            //EmployeeViewModel empview = emp.ToEmployeeViewModel();
             //EmployeeViewModel empview = emp;
 
-            Console.WriteLine(empview);
+            //Console.WriteLine(empview);
             #endregion
 
+            #region Static
+            //Uitilty.PI = 3.14;
+            //Console.WriteLine(Uitilty.CalcCircleArea(10));
+            #endregion
+
+            #region Partial
+            //PArtiales.Employee emp = new PArtiales.Employee();
+            //emp.Id = 1215454;
+            //emp.Name = "test";
+            //emp.Salary = 100000;
+            //emp.Address = "asyut";
+            //emp.Age = 15;
+            //emp.City = "Cairo";
+            //emp.Country = "Egypt";
+            #endregion
+
+            #region Generics
+            #region Ex01:Swap
+            //int num1 = 10, num2 = 20;
+            //object x = num1 , xx = num2; //boxing
+            ////Helper.Swap(ref num1,ref num2);
+            //Helper.Swap(ref x,ref xx);
+            //num1 = (int)x; // unboxing
+            //num2 = (int)xx; // unboxing
+            //Console.WriteLine($"num1 : {num1} , num2 : {num2}");
+            ////Console.WriteLine($"num1 : {x} , num2 : {xx}");
+
+            //double num3 = 10.25, num4 = 20.5;
+            //object II = num3, IV = num4;
+            ////Helper.Swap(ref num3, ref num4);
+            //Helper.Swap(ref II, ref IV);
+            ////Console.WriteLine($"num3 : {num3} , num4 : {num4}");
+            //Console.WriteLine($"num3 : {II} , num4 : {IV}");
+
+            //string str1 = "ahmed", str2 = "mohmed";
+            //object III = str1, IVV = str2;
+            ////Helper.Swap(ref str1, ref str2);
+            //Helper.Swap(ref III, ref IVV);
+            //Console.WriteLine($"str1 : {III} , str2 : {IVV}");
+
+            //int num1 = 10; 
+            //double num2 = 20.5;
+            //object x = num1, xx = num2; //boxing
+            ////Helper.Swap(ref num1,ref num2);
+            //Helper.Swap(ref x, ref xx);
+            //num1 = (int)x; // unboxing [unsafe]
+            //num2 = (int)xx; // unboxing [unsafe]
+            //Console.WriteLine($"num1 : {num1} , num2 : {num2}");
+            ////Console.WriteLine($"num1 : {x} , num2 : {xx}");
+
+
+            //int num1 = 10, num2 = 20;
+            //Helper.Swap<int>(ref num1, ref num2);
+            //Console.WriteLine($"num1 : {num1} , num2 : {num2}");
+
+            //string str1 = "ahmed", str2 = "mohmed";
+            //Helper.Swap<string>(ref str1, ref str2);
+            //Console.WriteLine($"str1 : {str1} , str2 : {str2}");
+
+            //int num1 = 10;
+            //double num2 = 20.5;
+            //Helper.Swap(ref num1, ref num2);
+            #endregion
+            #region Ex02:Search
+            //int[] numbers = { 5, 3, 2, 19, 4, 10, 1, 4 };
+            //int postion = Array.IndexOf(numbers, 10);
+            //int postion2 = Helper.SearchArray(numbers, 10);
+            //Console.WriteLine(postion);
+            //Console.WriteLine(postion2);
+
+            Generics.Point[] points =
+            {
+                new Generics.Point(0,0),
+                new Generics.Point(1,0),
+                new Generics.Point(2,0),
+                new Generics.Point(3,0),
+                new Generics.Point(4,0),
+                new Generics.Point(5,0),
+            };
+            int postion = Array.IndexOf(points, new Generics.Point(3, 0));
+            int postion2 = Helper.SearchArray(points, new Generics.Point(3, 0));
+            Console.WriteLine(postion);
+            Console.WriteLine(postion2);
+
+
+            string test = "Ahmed";
+            string test2 = "Ahmed";
+            Console.WriteLine(test.GetHashCode());
+            Console.WriteLine(test2.GetHashCode());
+            Console.WriteLine(test.Equals(test2));
+
+            #endregion
+            #endregion
         }
         #region PolyMorphism 1. Function OverLoading
         //1.data type of paramaters
@@ -653,11 +750,30 @@ namespace OOP
         #endregion
     }
 
-    static class test
-    {
-        public static void add(this int a , int value)
-        {
-            a += value;
-        }
-    }
+    //static class test
+    //{
+    //    //public static void add(this int num, int value)
+    //    //{
+    //    //    num += value;
+    //    //}
+
+    //    public static void PrintPattern(this Operator_Overloading.Employee emp)
+    //    {
+    //        Console.WriteLine($"{emp.FirstName} :: {emp.LastName}");
+    //    }
+
+    //    public static EmployeeViewModel converttoviewmodel(this Operator_Overloading.Employee emp)
+    //    {
+    //        return new EmployeeViewModel(emp);
+    //        //Console.WriteLine($"{emp.FirstName} :: {emp.LastName}");
+    //    }
+    //}
+
+    //static class test
+    //{
+    //    public static void add(this int a , int value)
+    //    {
+    //        a += value;
+    //    }
+    //}
 }

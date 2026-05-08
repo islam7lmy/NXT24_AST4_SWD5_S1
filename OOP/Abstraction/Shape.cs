@@ -44,10 +44,10 @@ namespace OOP.Abstraction
 
         public override double Perimeter { get { return Dim01 * 4; } }
 
-        public override double CalcArea()
-        {
-            return Dim01 * Dim01;
-        }
+        //public override double CalcArea()
+        //{
+        //    return Dim01 * Dim01;
+        //}
 
     }
 
@@ -58,10 +58,10 @@ namespace OOP.Abstraction
 
         public override double Perimeter { get { return (Dim01 + Dim02) * 2; } }
 
-        public override double CalcArea()
-        {
-            return Dim01 * Dim02;
-        }
+        //public override double CalcArea()
+        //{
+        //    return Dim01 * Dim02;
+        //}
     }
 
     class Circle : Shape

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP", "OOP\OOP.csproj", "{5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commen", "Commen\Commen.csproj", "{8BB5E3C8-C413-490C-8934-24F492F906AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore", "EFCore\EFCore.csproj", "{423A2AD1-D54E-430D-BAC7-45805CFB4A4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8BB5E3C8-C413-490C-8934-24F492F906AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BB5E3C8-C413-490C-8934-24F492F906AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BB5E3C8-C413-490C-8934-24F492F906AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{423A2AD1-D54E-430D-BAC7-45805CFB4A4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{423A2AD1-D54E-430D-BAC7-45805CFB4A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{423A2AD1-D54E-430D-BAC7-45805CFB4A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{423A2AD1-D54E-430D-BAC7-45805CFB4A4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

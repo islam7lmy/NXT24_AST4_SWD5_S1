@@ -27,6 +27,21 @@ namespace EFCore.Configurations
             d.Property(d => d.CreationDate)
             .HasColumnType("date")
             .HasComputedColumnSql("GETDATE()");
+
+            //d.HasMany(d=>d.Employees)
+            //    .WithOne(e=>e.Department)
+            //    .HasForeignKey(e=>e.DepartmentDeptId)
+            //    .OnDelete(DeleteBehavior.NoAction);
+
+            //d.HasOne(d=>d.Manager)
+            //    .WithOne(e=>e.DepartmentToManage)
+            //    .HasForeignKey<Department>(d=>d.EmployeeId)
+            //    .OnDelete(DeleteBehavior.NoAction);
+
+            d.HasOne<Employee>()
+                .WithOne()
+                .HasForeignKey<Department>(d => d.EmployeeId)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

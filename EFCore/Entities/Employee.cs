@@ -64,18 +64,42 @@ namespace EFCore.Entities
     #endregion
 
     #region 3. Fluent API
+    //internal class Employee
+    //{
+    //    public int Id { get; set; } //primary key by convention identity(1,1) int not allow null
+    //    public string? Name { get; set; } //nvarchar(max) allow null
+    //    public double Salary { get; set; } // float not allow null
+    //    public int? Age { get; set; } // int allow null
+    //    public string? Email { get; set; }
+    //    public string? PhoneNumber { get; set; }
+    //    public double NetSalary => Salary * .9;
+    //}
+    #endregion
+
+    #endregion
+
+    #region RelationShip Mapping
     internal class Employee
     {
-        public int Id { get; set; } //primary key by convention identity(1,1) int not allow null
-        public string? Name { get; set; } //nvarchar(max) allow null
-        public double Salary { get; set; } // float not allow null
-        public int? Age { get; set; } // int allow null
+        public int Id { get; set; } 
+        public string? Name { get; set; } 
+        public double Salary { get; set; } 
+        public int? Age { get; set; } 
         public string? Email { get; set; }
         public string? PhoneNumber { get; set; }
         public double NetSalary => Salary * .9;
-    }
-    #endregion
 
+        //[ForeignKey(nameof(Department))]
+        public int DepartmentDeptId { get; set; }
+        //[InverseProperty(nameof(Department.Employees))]
+        //public Department Department { get; set; }
+
+        //[InverseProperty(nameof(Department.Manager))]
+        //public Department? DepartmentToManage { get; set; }
+
+
+
+    }
     #endregion
 
     public static class DBTypes

@@ -4,6 +4,7 @@ using EFCore.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCore.Migrations
 {
     [DbContext(typeof(CompanyDbContext))]
-    partial class CompanyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260626140535_RelationShipMappingWithFKandNavigationProperty4")]
+    partial class RelationShipMappingWithFKandNavigationProperty4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -89,20 +92,34 @@ namespace EFCore.Migrations
 
             modelBuilder.Entity("EFCore.Entities.Department", b =>
                 {
-                    b.HasOne("EFCore.Entities.Employee", null)
-                        .WithOne()
+                    b.HasOne("EFCore.Entities.Employee", "Manager")
+                        .WithOne("DepartmentToManage")
                         .HasForeignKey("EFCore.Entities.Department", "EmployeeId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.Navigation("Manager");
                 });
 
             modelBuilder.Entity("EFCore.Entities.Employee", b =>
                 {
-                    b.HasOne("EFCore.Entities.Department", null)
-                        .WithMany()
+                    b.HasOne("EFCore.Entities.Department", "Department")
+                        .WithMany("Employees")
                         .HasForeignKey("DepartmentDeptId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("EFCore.Entities.Department", b =>
+                {
+                    b.Navigation("Employees");
+                });
+
+            modelBuilder.Entity("EFCore.Entities.Employee", b =>
+                {
+                    b.Navigation("DepartmentToManage");
                 });
 #pragma warning restore 612, 618
         }

@@ -15,11 +15,11 @@ namespace EFCore.Entities
         public DateOnly CreationDate { get; set; }
 
         //[InverseProperty(nameof(Employee.Department))]
-        //public ICollection<Employee> Employees { get; set; }
+        public ICollection<Employee> Employees { get; set; }
 
         //[ForeignKey(nameof(Manager))]
         public int EmployeeId { get; set; }
         //[InverseProperty(nameof(Employee.DepartmentToManage))]
-        //public Employee Manager { get; set; }
+        public Employee Manager { get; set; }
     }
 }

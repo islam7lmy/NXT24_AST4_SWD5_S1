@@ -38,10 +38,31 @@ namespace EFCore.Configurations
             //    .HasForeignKey<Department>(d=>d.EmployeeId)
             //    .OnDelete(DeleteBehavior.NoAction);
 
-            d.HasOne<Employee>()
-                .WithOne()
-                .HasForeignKey<Department>(d => d.EmployeeId)
+            //d.HasOne<Employee>()
+            //    .WithOne()
+            //    .HasForeignKey<Department>(d => d.EmployeeId)
+            //    .OnDelete(DeleteBehavior.NoAction);
+
+            //works
+            //d.HasMany(d => d.Employees)
+            //    .WithOne(e => e.Department)
+            //    .HasForeignKey(e => e.DepartmentDeptId)
+            //    .OnDelete(DeleteBehavior.NoAction);
+
+            //manager relationship
+            d.HasOne(d=>d.Manager)
+                .WithOne(e=>e.DepartmentToManage)
+                .HasForeignKey<Department>(d=>d.EmployeeId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+
+
+
+
+
+
+
+
         }
     }
 }

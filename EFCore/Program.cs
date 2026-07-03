@@ -140,6 +140,141 @@ namespace EFCore
             ///     3.2 Navigational property [class name]
             ///     by defaulty 
             #endregion
+
+            #region Mapping Inhertince
+            using InheritanceDbContext dbContext = new InheritanceDbContext();
+            Person person = new Person()
+            {
+                Name = "AliTPC",
+                Age = 20
+            };
+            FullTime ftEmployee = new FullTime()
+            {
+                Name = "AhmedTPC",
+                Age = 30,
+                Salary = 5000,
+                HiringDate = DateOnly.FromDateTime(DateTime.Now)
+            };
+
+            PartTime ptEmployee = new PartTime()
+            {
+                Name = "MohamedTPC",
+                Age = 25,
+                HourRate = 50,
+                HoursCount = 20
+            };
+
+            #region TPH
+            #region TwoDbset
+            //dbContext.FullTimePerson.Add(ftEmployee);
+            //dbContext.PartTimePerson.Add(ptEmployee);
+            //dbContext.SaveChanges();
+
+            //var FTPerson = from p in dbContext.FullTimePerson
+            //               select p;
+
+            //foreach (var item in FTPerson)
+            //    Console.WriteLine($"FullTime Employee:{item.Name}, Salary: {item.Salary}");
+
+            //var PTPerson = from p in dbContext.PartTimePerson
+            //               select p;
+
+            //foreach (var item in PTPerson)
+            //    Console.WriteLine($"PartTime Employee:{item.Name}, HourRate: {item.HourRate}, HoursCount: {item.HoursCount}");
+            #endregion
+            #region OneDbset
+            //dbContext.Persons.Add(person);
+            //dbContext.Persons.Add(ftEmployee);
+            //dbContext.Persons.Add(ptEmployee);
+            //dbContext.SaveChanges();
+
+            //var persons = from p in dbContext.Persons
+            //              select p;
+
+            //Console.WriteLine("*****************Persons******************");
+            //foreach (var item in persons)
+            //{
+            //    Console.WriteLine($"FullTime Employee:{item.Name}, Type: {item.GetType().Name}");
+            //}
+
+            //var fullTimePersons = from p in dbContext.Persons.OfType<FullTime>()
+            //                      select p;
+
+            //Console.WriteLine("*****************fulltime******************");
+            //foreach (var item in fullTimePersons)
+            //{
+            //    Console.WriteLine($"FullTime Employee:{item.Name}, Salary: {item.Salary}");
+            //}
+
+
+            //var parttimeemployees = from Person in dbContext.Persons.OfType<PartTime>()
+            //                        select Person;
+            //Console.WriteLine("*****************parttime******************");
+            //foreach (var item in parttimeemployees)
+            //{
+            //    Console.WriteLine($"FullTime Employee:{item.Name}, Hour rate: {item.HourRate}");
+            //}
+
+
+            //var Personsonly = from Person in dbContext.Persons.OfType<Person>()
+            //                        select Person;
+            //Console.WriteLine("*****************Personsonly******************");
+            //foreach (var item in Personsonly)
+            //{
+            //    Console.WriteLine($"FullTime Employee:{item.Name}");
+            //}
+            #endregion
+            #endregion
+
+            #region TPT
+            //dbContext.FullTimePersons.Add(ftEmployee);
+            //dbContext.PartTimePersons.Add(ptEmployee);
+            //dbContext.Persons.Add(person);
+            //dbContext.Persons.Add(ftEmployee);
+            //dbContext.Persons.Add(ptEmployee);
+            //dbContext.SaveChanges();
+
+
+            //var persons = from p in dbContext.Persons
+            //              select p;
+
+            //Console.WriteLine("*****************Persons******************");
+            //foreach (var item in persons)
+            //{
+            //    Console.WriteLine($"FullTime Employee:{item.Name}, Type: {item.GetType().Name}");
+            //}
+
+
+            //var fullTimePersons = from p in dbContext.FullTimePersons
+            //                      select p;
+
+            //Console.WriteLine("*****************fulltime******************");
+            //foreach (var item in fullTimePersons)
+            //{
+            //    Console.WriteLine($"FullTime Employee:{item.Name}, Salary: {item.Salary}");
+            //}
+
+            #endregion
+
+            #region TPC
+            //dbContext.FullTimePersons.Add(ftEmployee);
+            ////dbContext.FullTimePersons.Add(person); not valid
+            //dbContext.PartTimePersons.Add(ptEmployee);
+            ////dbContext.PartTimePersons.Add(person); not valid
+            //dbContext.SaveChanges();
+
+            //var fullTimePersons = from p in dbContext.FullTimePersons
+            //                      select p;
+
+            //Console.WriteLine("*****************fulltime******************");
+            //foreach (var item in fullTimePersons)
+            //{
+            //    Console.WriteLine($"FullTime Employee:{item.Name}, Salary: {item.Salary}");
+            //}
+
+            #endregion
+
+            #endregion
         }
     }
 }

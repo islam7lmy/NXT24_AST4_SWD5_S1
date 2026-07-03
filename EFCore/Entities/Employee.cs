@@ -92,10 +92,10 @@ namespace EFCore.Entities
         //[ForeignKey(nameof(Department))]
         public int DepartmentDeptId { get; set; }
         //[InverseProperty(nameof(Department.Employees))]
-        //public Department Department { get; set; }
+        public Department Department { get; set; }
 
         //[InverseProperty(nameof(Department.Manager))]
-        //public Department? DepartmentToManage { get; set; }
+        public Department? DepartmentToManage { get; set; }
 
 
 

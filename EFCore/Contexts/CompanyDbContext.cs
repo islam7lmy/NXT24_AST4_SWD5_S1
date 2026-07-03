@@ -100,5 +100,8 @@ namespace EFCore.Contexts
 
         public DbSet<Employee> Employees { get; set; }
         //public DbSet<Department> Departments { get; set; }
+
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Course> Courses { get; set; }
     }
 }

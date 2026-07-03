@@ -4,6 +4,7 @@ using EFCore.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCore.Migrations
 {
     [DbContext(typeof(CompanyDbContext))]
-    partial class CompanyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260703121353_RealtionShipMappingM2MWithNavigationPropertiesAndTable")]
+    partial class RealtionShipMappingM2MWithNavigationPropertiesAndTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -163,17 +166,26 @@ namespace EFCore.Migrations
 
             modelBuilder.Entity("EFCore.Entities.StudentCourse", b =>
                 {
-                    b.HasOne("EFCore.Entities.Course", null)
-                        .WithMany()
+                    b.HasOne("EFCore.Entities.Course", "Course")
+                        .WithMany("StudentCourses")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EFCore.Entities.Student", null)
-                        .WithMany()
+                    b.HasOne("EFCore.Entities.Student", "Student")
+                        .WithMany("StudentCourses")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Course");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("EFCore.Entities.Course", b =>
+                {
+                    b.Navigation("StudentCourses");
                 });
 
             modelBuilder.Entity("EFCore.Entities.Department", b =>
@@ -184,6 +196,11 @@ namespace EFCore.Migrations
             modelBuilder.Entity("EFCore.Entities.Employee", b =>
                 {
                     b.Navigation("DepartmentToManage");
+                });
+
+            modelBuilder.Entity("EFCore.Entities.Student", b =>
+                {
+                    b.Navigation("StudentCourses");
                 });
 #pragma warning restore 612, 618
         }
